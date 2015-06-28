@@ -1,3 +1,7 @@
+package entity;
+
+import entity.Entity;
+
 public class Player extends Entity {
     int destX, destY;
     double speed;

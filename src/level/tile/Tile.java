@@ -1,3 +1,5 @@
+package level.tile;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -10,7 +12,11 @@ public class Tile {
     }
 
     public Tile (String imageName, boolean passable) {
-        image = (new ImageIcon(imageName)).getImage();
+        image = (new ImageIcon(imageName)).getImage().getScaledInstance(32, 32, Image.SCALE_FAST);
         this.passable = passable;
+    }
+
+    public Image getImage() {
+        return image;
     }
 }

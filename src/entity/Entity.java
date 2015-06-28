@@ -1,12 +1,15 @@
+package entity;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.ImageObserver;
 
 public class Entity {
-    public int x, y;
+    public int x, y; // pixel coordinates in world
     public int dx, dy;
     public int width, height;
-    public boolean vis, passable;
+    public boolean vis = true;
+    public boolean passable;
     public Image image;
 
     public Entity(String imageName, int x, int y, int width, int height) {
@@ -95,7 +98,7 @@ public class Entity {
         y += dy;
     }
 
-    public void draw(Graphics2D g2d, ImageObserver io) {
-        g2d.drawImage(image, x, y, io);
+    public boolean shouldRender(int viewportX, int viewportY, int viewportWidth, int viewportHeight) {
+        return vis && this.x + this.width >= viewportX && this.x < viewportX + viewportWidth && this.y + this.height >= viewportY && this.y < viewportHeight;
     }
 }
